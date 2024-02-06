@@ -1,0 +1,64 @@
+{%extends 'admindoctor12.html'%}
+{%block content %}
+
+
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+       <!--  <h3 style="text-align: center;padding-bottom: 20px;color: #009CFF;">Bed List  </h3> -->
+
+        <h3><section class="animation">
+       
+            <div class="first"><div>CureSync</div></div>
+            <div class="second"><div>Bed List</div></div>
+            <div class="third"><div>Detailed  View</div></div>
+            <br>
+          </section></h3>
+
+        <h2><p  class= "select plus-btn" >
+            <a class="button1 plus-plus"type="button" href="{% url 'bedassign' %}"><i class="fa fa-plus" ></i></a> 
+        </p></h2>
+        <div class="table-responsive" style="margin-top: -50px;">
+            <table id="example" class="table"style="margin-top: 30px;">
+                <thead>
+                  <tr>
+                      <th>Bed ID</th>
+                      <th>Patient Name</th>
+                      <th>Nurse Name</th>
+                      <th>Department Name</th>
+                      <th>Bed Number</th>
+                      <th>Description</th>
+                      <th>Assign Date</th>
+                      <th>Discharge Date</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for i in bed %}
+                  <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.patient}}</td>
+                      <td>{{i.nurse}}</td>
+                      <td>{{i.department}}</td>
+                      <td>{{i.number}}</td>
+                      <td>{{i.description}}</td>
+                      <td>{{i.date1}}</td>
+                      <td>{{i.date2}}</td>
+                      <td class="select"><a class="button" href="{% url 'editbedlist' i.id %}" onclick="return confirm('Are   you really want to Update ')" class="btn btn-warning">Update</a></td>
+                      <td class="select"><a class="button" href="{% url 'deletebedassign' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+                  </tr>
+                  {% endfor i in bed %}
+              </tbody>
+                
+                
+              
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div> 
+Table End 
+{% endblock %}
+

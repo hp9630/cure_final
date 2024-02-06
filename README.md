@@ -1,0 +1,2 @@
+# curesync
+# curemain12

@@ -1,0 +1,45 @@
+{%extends 'admindoctor12.html'%}
+{%block content %}
+
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">View Appointment</h6>
+        
+        <div class="table-responsive">
+            <table id="example" class="table">
+                <thead>
+                  <tr>
+                      <th>Appointment ID</th>
+                      <th>Doctor Name</th>
+                      <th>Patient Name</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for i in appoint %}
+                  <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.doctor}}</td>
+                      <td>{{i.patient}}</td>
+                      <td>{{i.date1}}</td>
+                      <td>{{i.time1}}</td>
+                  </tr>
+                  {% endfor i in appoint %}
+              </tbody>
+                
+                
+              </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+

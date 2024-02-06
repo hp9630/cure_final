@@ -1,0 +1,55 @@
+{%extends 'admindoctor12.html'%}
+{%block content %}
+
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">View Nurse</h6>
+        <div class="table-responsive">
+            <table id="example" class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      Nurse ID
+                    </th>
+                    <th>
+                      Nurse Name
+                    </th>
+                    <th>
+                      Gender
+                    </th>
+                    <th>
+                      Department
+                    </th>
+                    <th>
+                      Contact
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in nur %}
+                  <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.name}}</td>
+                      <td>{{i.gender}}</td>
+                      <td>{{i.department}}</td>
+                      <td>{{i.mobile}}</td>
+                      
+                  </tr>
+                  {% endfor i in nur %}
+              </tbody>
+                
+                
+              </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+

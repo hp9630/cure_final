@@ -1,0 +1,68 @@
+{%extends 'adminmain12.html'%}
+{%block content %}
+
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <!-- <h3 style="text-align: center;padding-bottom: 20px;color: #009CFF;">View Bill </h3> -->
+        <h3><section class="animation">
+       
+            <div class="first"><div>CureSync</div></div>
+            <div class="second"><div>Bill Section</div></div>
+            <div class="third"><div>Detailed  View</div></div>
+            <br>
+          </section></h3>
+        <h2><p  class= "select plus-btn" >
+            <a class="button1 plus-plus"type="button" href="{% url 'addgbill' %}"><i class="fa fa-plus" ></i></a> 
+        </p></h2>
+        <div class="table-responsive" style="margin-top: -50px;">
+            <table id="example" class="table"style="margin-top: 30px;">
+                <thead>
+                  <tr>
+                      <th>Bill ID</th>
+                      <th>Patient Name</th>
+                      <th>Mail</th>
+                      <th>Operation</th>
+                      <td>Medicine</td>
+                      <td>Additional</td>
+                      <th>Note</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                      <th>Invoice</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for i in bill %}
+                  <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.patient}}</td>
+                      <td>{{i.mailid}}</td>
+                      <td>{{i.operation}}</td>
+                      <td>{{i.medicine}}</td>
+                      <td>{{i.additional}}</td>
+                      <td>{{i.note}}</td>
+                      <td>{{i.date1}}</td>
+                      <td>{{i.status}}</td>
+                      <td class="select"><a class="button"href="{% url 'editgbill' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-warning">Update</a></td>
+                      <td class="select"><a class="button" href="{% url 'deletegbill' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+                      <td class="select"><a class="button"href="{% url 'editinvoice' i.id %}" onclick="return confirm('Are   you really want to download invoice ')" class="btn btn-warning">Invoice</a></td>  
+                    </tr>
+
+                  {% endfor i in bill %}
+              </tbody>
+                
+                
+              </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+

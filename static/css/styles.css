@@ -1,0 +1,46 @@
+/*
+Theme Name: Invoice V5
+Theme URI: https://templatesjungle.com/
+Author: TemplatesJungle
+Author URI: https://templatesjungle.com/
+Description: Invoice V5 is specially designed product packaged for Invoice.
+Version: 5.0
+*/
+
+/*--------------------------------------------------------------
+Styles
+--------------------------------------------------------------*/
+
+/* Fonts */
+:root {
+  --body-font: 'Open Sans', sans-serif;
+}
+
+/* Bootstrap Override */
+body {
+  --bs-font-sans-serif: 'Open Sans', sans-serif;
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 2;
+  --bs-body-color: #303030;
+  --bs-border-color: #eeeeee;
+}
+.btn-dark {
+  color: #fff;
+  background-color: #2a3342;
+  
+  
+}
+.btn-dark.disabled, .btn-dark[disabled], fieldset[disabled] .btn-dark, .btn-dark.disabled:hover, .btn-dark[disabled]:hover, fieldset[disabled] .btn-dark:hover, .btn-dark.disabled:focus, .btn-dark[disabled]:focus, fieldset[disabled] .btn-dark:focus, .btn-dark.disabled:active, .btn-dark[disabled]:active, fieldset[disabled] .btn-dark:active, .btn-dark.disabled.active, .btn-dark[disabled].active, fieldset[disabled] .btn-dark.active {
+  background-color: #2a3342;
+  border-color: #2a3342;
+}
+.btn-dark.btn-dark:hover, .btn-dark.btn-dark:focus, .btn-dark.btn-dark:active, .btn-dark.btn-dark.active {
+  background-color: #629aa9;
+}
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active, .open > .dropdown-toggle.btn-dark {
+  color: #fff;
+  background-color: #2a3342;
+  border-color: rgba(0, 0, 0, 0.05);
+}

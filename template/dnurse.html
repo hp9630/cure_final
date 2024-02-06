@@ -1,0 +1,44 @@
+{%extends 'exportdata.html'%}
+{%block content %}
+<thead>
+    <tr>
+      <th>
+        Nurse ID
+      </th>
+      <th>
+        Nurse Name
+      </th>
+      <th>
+        Gender
+      </th>
+      <th>
+        Department
+      </th>
+      <th>
+        Contact
+      </th>
+      <th>
+        Update
+      </th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in nur %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.mobile}}</td>
+        <td class="select"><a class="button"href="{% url 'editnurse' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-warning">Update</a></td>
+        <td class="select"><a class="button" href="{% url 'deletenurse' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor i in nur %}
+</tbody>
+  
+  
+</tbody>
+{% endblock %}

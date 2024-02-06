@@ -1,0 +1,89 @@
+{% extends 'admindoctor12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">ASSIGN BED</h6>
+
+                <form  method="POST">
+                  {% csrf_token %} 
+            
+                    <div class="mb-3">
+                      <label >Patient Name</label>
+                      <select name="patient" class="form-control">
+                          {% for i in patient %}
+                          <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                     <div class="mb-3">
+                        <label >Nurse Name</label>
+                        <select name="nurse" class="form-control">
+                        {% for i in nurse %}
+                            <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label >Department Name</label>
+                        <select name="department" class="form-control">
+                        {% for i in department %}
+                            <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="name" class="form-label" >Department Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="number" class="form-label">Bed Number</label>
+                        <input type="text" class="form-control" id="number" name="number" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="description" class="form-label" >Description</label>
+                      <input type="textarea" class="form-control" id="description" name="description" required>
+                  </div>
+
+                    <div class="mb-3">
+                      <label for="date1">Assign Date</label>
+                      <input type="date" id="date1" name="date1" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="date2">Discharge Date</label>
+                    <input type="date" id="date2" name="date2" required>
+                </div>
+                 
+
+                <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'bedassignlist' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

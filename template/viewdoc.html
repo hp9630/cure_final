@@ -1,0 +1,50 @@
+{%extends 'adminmain12.html'%}
+{%block content %}
+
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">View Document</h6>
+        <p  class= "select" style="float: right;">
+            <a class="button1"type="button" href="{% url 'adddoc' %}">Add Document</a>
+        </p>
+        <div class="table-responsive">
+            <table id="example" class="table">
+                <thead>
+                  <tr>
+                      <th>Document ID</th>
+                      <th>Patient Name</th>
+                      <th>Document Name</th>
+                      <th>Document</th>
+                      <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for i in document %}
+                  <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.patient}}</td>
+                      <td>{{i.name}}</td>
+                      <td>
+                        <img src="{{i.image.url}}" alt=""width="50" height="60" >
+                      </td>
+                      
+
+                      <td class="select"><a class="button" href="{% url 'deletedocument' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+                  </tr>
+                  {% endfor i in document %}
+              </tbody>
+                
+                
+              </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+

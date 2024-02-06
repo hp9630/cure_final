@@ -1,0 +1,72 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit Doctor</h6>
+         
+                <form  method="post" action="{% url 'updatedoctor' id=id %}" >
+                   
+                  {% csrf_token %} 
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label" >Doctor Name</label>
+                        
+                        <input type="text" class="form-control" id="name" name="name" value="{{doctor.name}}">
+                        
+
+                    </div>
+                    <div class="mb-3">
+                      <label for="contact" class="form-label">Contact</label>
+                      <input type="text" class="form-control" id="contact" name="contact" value="{{doctor.mobile}}">
+                  </div>
+                  <div class="mb-3">
+                    <label >Department Name</label>
+                    <select name="department"id="myDropdown" class="form-control">
+                        {% for i in department %}
+                        <option value="{{i.name}}" >{{i.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="special" class="form-label" >Specialization</label>
+                    <input type="text" class="form-control" id="special" name="special" value="{{doctor.special}}">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Edit</button>
+                
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Set the default value using JavaScript
+    document.getElementById("myDropdown").value = "{{doctor.department}}";
+  </script>
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'viewdoctors' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

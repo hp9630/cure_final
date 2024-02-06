@@ -1,0 +1,78 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add Bill</h6>
+
+                <form action="{% url 'finalinvoice' %}" method="POST"enctype="multipart/form-data">
+                  {% csrf_token %} 
+
+                  <div class="mb-3">
+                    <label >Patient Name</label>
+                    <select name="patient" class="form-control">
+                        {% for i in patient %}
+                        <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                    
+                  
+                    <div class="mb-3">
+                      <label for="operation" class="form-label">Operation Cost</label>
+                      <input type="number" class="form-control" id="operation" name="operation" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="medicine" class="form-label">Medicine Cost</label>
+                    <input type="number" class="form-control" id="medicine" name="medicine" required>
+                </div>
+                <div class="mb-3">
+                    <label for="additional" class="form-label">Additional Charges</label>
+                    <input type="number" class="form-control" id="additional" name="additional" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tax" class="form-label">Tax Amount</label>
+                    <input type="number" class="form-control" id="tax" name="tax" required>
+                </div>
+                  <div class="mb-3">
+                    <label for="note" class="form-label" >Note</label>
+                    <input type="textarea" class="form-control" id="note" name="note" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label" >DATE</label>
+                    <input type="date" class="form-control" id="date" name="date" pattern="\d{4}-\d{2}-\d{2}"required>
+                </div>
+              
+              <!-- <button type="submit" class="btn btn-primary">Genarate Invoice</button> -->
+                <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'viewgbill' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

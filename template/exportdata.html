@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords"
+    content="Medick Responsive web template, Bootstrap Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <title>CureSync</title>
+  <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Template CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style-starter.css' %}">
+  <!--Datacase cdm -->
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <link rel="stylesheet" src="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" src="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+<!-- Template CSS -->
+
+<script>
+  $(document).ready(function() {
+  $('#example').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'copyHtml5',
+          'excelHtml5',
+          'csvHtml5',
+          'pdfHtml5'
+      ]
+  } );
+} );
+</script>
+</head>
+
+    <div class="container"><br>
+      <h2>Export Data</h2>
+      
+      <table id="example" class="table">
+        <br>
+        {%block content %}
+                    
+        {%endblock %}
+            
+      </table>
+    </div>
+    </body>
+    
+    
+</html>

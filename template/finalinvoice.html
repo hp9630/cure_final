@@ -1,0 +1,222 @@
+<!-- 294FE618-660A4E41-A945ECE4-C29CC0CA -->
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoice </title>
+    <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div clss="div" id="md" >
+
+        <section id="invoice">
+            <div class="container">
+                {% if messages %} 
+                {% for message in messages%} 
+                {% if message.tags == "error" %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>{{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% else %}
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <i class="fa fa-exclamation-circle me-2"></i>{{message}}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              {% endif %}
+               {% endfor%} 
+               {% endif %}
+                <div class="px-5"
+                    style="background-image:url(assets/images/bg3.jpg); background-repeat: no-repeat; background-position: center center;">
+                    <div class="container py-5">
+                        <div class=" d-md-flex justify-content-between align-items-center py-5">
+                            <!-- <div>
+                                <img src="{% static 'assets/images/bg3.jpg' %}" alt="">
+                            </div> -->
+                            <div class="mt-5 mt-md-0">
+    
+                                <h5 class="fw-bold mb-4">Contact Info</h5>
+                                <ul class="list-unstyled">
+                                    <li><iconify-icon class="social-icon text-black fs-5 me-2" icon="mdi:location"
+                                            style="vertical-align:text-bottom"></iconify-icon> 30 Lake St, Surat,Gujarat
+                                    </li>
+                                    <li><iconify-icon class="social-icon text-black fs-5 me-2" icon="solar:phone-bold"
+                                            style="vertical-align:text-bottom"></iconify-icon> +(510) 710-3464</li>
+                                    <li><iconify-icon class="social-icon text-black fs-5 me-2" icon="ic:baseline-email"
+                                            style="vertical-align:text-bottom"></iconify-icon> curesync.org@gmail.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    <h6><hr></h6>
+                <div class="d-md-flex justify-content-between align-items-center px-5 my-5">
+    
+                    <div class="">
+                        <h2 class="display-6 fw-bold">Invoice </h2>
+                        <p class="m-0"><span class="fw-semibold">Invoice No:</span> <span id="randomNumber"></span></p>
+                    </div>
+    
+                    <div class="mt-5 mt-md-0">
+                        <ul class="list-unstyled">
+                            <li><span class="fw-semibold">Invoice Date:</span> {{dt}}</li>
+                       
+                        </ul>
+                    </div>
+                </div>
+    
+    
+                <div class="d-md-flex justify-content-between px-5"> 
+                    <div>
+                        <p class="fw-bold fs-5">Invoice To</p>
+                        <h6><label for="name" class="form-label" >Patient Name : </label><span style="text-transform:uppercase;" >{{p}}</span>  </h6>
+                        <ul class="list-unstyled">
+                            <li><span >{{no}}</span> </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="mt-5 mt-md-0">
+                        <p class="fw-bold fs-5">Invoice From</p>
+                        <h6>Head Accountant : HARSHIL PATEL</h6>
+                        <ul class="list-unstyled">
+                            <li>CureSync Organization</li>
+                           
+                           
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="px-5">
+                    <table class="table table-striped border my-5">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+    
+                                <th>1</th>
+                                <td>Operation Cost </td>
+                                <td><i class="fas fa-dollar-sign">{{o}}</td>
+                                <td><i class="fas fa-dollar-sign">${{o}}</td>
+                                
+                            </tr>
+                            <tr>
+    
+                                <th>2</th>
+                                <td>Medicine Cost</td>
+                                <td><i class="fas fa-dollar-sign">{{m}}</td>
+                                <td><i class="fas fa-dollar-sign">${{m}}</td>
+                              
+                               
+                            </tr>
+                            <tr>
+    
+                                <th>3</th>
+                                <td>Additional Cost</td>
+                                <td><i class="fas fa-dollar-sign">{{a}}</td>
+                                <td><i class="fas fa-dollar-sign">${{a}}</td>
+                                
+                            </tr>
+                            <tr>
+    
+                                <th>4</th>
+                                <td>Tax Amount</td>
+                                <td><i class="fas fa-dollar-sign">{{t}}</td>
+                                <td><i class="fas fa-dollar-sign">${{t}}</td>
+                                
+                                
+                            </tr>
+                            <tr>
+    
+                                <th></th>
+                                <td></td>
+                                <td class="fs-5 fw-bold">Grand-Total</td>
+                                <td class="fs-5 fw-bold">${{total}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+    
+    
+                <div class="px-5">
+                    <div class="row mt-4 mb-5">
+    
+                        <div class="col-md-6">
+                            <h5 class="fw-bold mb-4">Payment Info</h5>
+                            <ul class="list-unstyled">
+                                <li><span class="fw-semibold">Account No: </span> 102 3345 56938</li>
+                                <li><span class="fw-semibold">Account Name: </span> CureSync</li>
+                                <li><span class="fw-semibold">Branch Name: </span> ADAJAN-HAZIRA </li>
+    
+                            </ul>
+                        </div>
+    
+                        <div class="col-md-6 mt-5 mt-md-0">
+                            <h5 class="fw-bold mb-4 ">Terms & Conditions</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam reiciendis quasi ullam
+                                delectus
+                                iusto ipsum veritatis accusantium quis, praesentium pariatur molestiae ducimus voluptate
+                                perspiciatis.</p>
+                        </div>
+    
+                    </div>
+    
+                    <div class="text-center mt-5">
+                        <p class="text-muted"><span class="fw-semibold">NOTICE: </span> </p>
+                    </div>
+                </div>
+    
+                
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <button  onclick="myfun('md')" type="button"  class="btn btn-dark m-2">Genarate PDF</button>
+    
+    <a class="button" href="{% url 'readyinvoice1' %}" onclick="return confirm('Are   you really want to send invoice ')" class="btn btn-danger">Send Invoice</a></td>
+<script>
+    // Function to generate a random 4-digit number
+    function generateRandomNumber() {
+        var randomNumber = Math.floor(Math.random() * 9000) + 1000; // Generates a random number between 1000 and 9999
+        document.getElementById('randomNumber').innerText = randomNumber;
+    }
+
+    // Call the function when the page loads
+    window.onload = generateRandomNumber;
+</script>
+<script type="text/javascript">
+    function myfun(pa) {
+        var b = document.body.innerHTML;
+        var d = document.getElementById(pa).innerHTML;
+        document.body.innerHTML=d;
+        window.print();
+        
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+crossorigin="anonymous"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+</html>

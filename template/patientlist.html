@@ -1,0 +1,56 @@
+{%extends 'admindoctor12.html'%}
+{%block content %}
+
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">View Patient</h6>
+        
+        <div class="table-responsive">
+            <table id="example" class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      Patient ID
+                    </th>
+                    <th>
+                      Patient Name
+                    </th>
+                    <th>
+                      Gender
+                    </th>
+                    <th>
+                      Contact
+                    </th>
+                    <th>
+                      Address
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in pat %}
+                  <tr>
+                      <td>{{i.id}}</td>
+                      <td>{{i.name}}</td>
+                      <td>{{i.gender}}</td>
+                      <td>{{i.mobile}}</td>
+                      <td>{{i.address}}</td>
+        
+                  </tr>
+                  {% endfor i in pat %}
+              </tbody>
+                
+                
+              </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+

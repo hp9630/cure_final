@@ -1,0 +1,36 @@
+{%extends 'exportdata.html'%}
+{%block content %}
+<thead>
+    <tr>
+        <th>Bed ID</th>
+        <th>Patient Name</th>
+        <th>Nurse Name</th>
+        <th>Department Name</th>
+        <th>Bed Number</th>
+        <th>Description</th>
+        <th>Assign Date</th>
+        <th>Discharge Date</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for i in bed %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.patient}}</td>
+        <td>{{i.nurse}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.number}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.date1}}</td>
+        <td>{{i.date2}}</td>
+        <td class="select"><a class="button" href="{% url 'editbedlist' i.id %}" onclick="return confirm('Are   you really want to Update ')" class="btn btn-warning">Update</a></td>
+        <td class="select"><a class="button" href="{% url 'deletebedassign' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor i in bed %}
+</tbody>
+  
+  
+
+{% endblock %}

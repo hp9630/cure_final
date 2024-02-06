@@ -1,0 +1,35 @@
+{%extends 'exportdata.html'%}
+{%block content %}
+<thead>
+    <tr>
+        <th>Bill ID</th>
+        <th>Patient Name</th>
+        <th>Amount</th>
+        <th>Note</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for i in bill %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.patient}}</td>
+        <td>{{i.number}}</td>
+        <td>{{i.note}}</td>
+        <td>{{i.date1}}</td>
+        <td>{{i.status}}</td>
+        <td class="select"><a class="button"href="{% url 'editbill' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-warning">Update</a></td>
+        <td class="select"><a class="button" href="{% url 'deletebill' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor i in bill %}
+</tbody>
+  
+  
+</tbody>
+  
+  
+
+{% endblock %}

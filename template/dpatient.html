@@ -1,0 +1,50 @@
+{%extends 'exportdata.html'%}
+{%block content %}
+<thead>
+    <tr>
+      <th>
+        Patient ID
+      </th>
+      <th>
+        Patient Name
+      </th>
+      <th>
+        Gender
+      </th>
+      <th>
+        Department
+      </th>
+      <th>
+        Contact
+      </th>
+      <th>
+        Address
+      </th>
+      <th>Document</th>
+      <th>Update</th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in pat %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.address}}</td>
+        <td>
+          <img src="{{i.image.url}}" alt=""width="50" height="60" >
+        </td>
+        <td class="select"><a class="button"href="{% url 'editpatient' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-warning">Update</a></td>
+        <td class="select"><a class="button" href="{% url 'deletepatient' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor i in pat %}
+</tbody>
+  
+  
+
+{% endblock %}

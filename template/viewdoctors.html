@@ -1,0 +1,73 @@
+{%extends 'adminmain12.html'%}
+{%block content %}
+
+<!--Table start-->
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+      <br>
+      <!-- <h3 style="text-align: center;padding-bottom: 20px;color: rgba(150, 207, 243, 0.859);"> Doctor Details </h3> -->
+    
+      <h3><section class="animation">
+       
+        <div class="first"><div>CureSync</div></div>
+        <div class="second"><div>Doctor Department</div></div>
+        <div class="third"><div>Detailed  View</div></div>
+        <br>
+      </section></h3>
+      
+   
+        <h2><p  class= "select plus-btn" >
+          <a class="button1 plus-plus"type="button" href="{% url 'adddoctors' %}"><i class="fa fa-plus" ></i></a> 
+      </p></h2>
+      <div class="table-responsive" style="margin-top: -50px;">
+        <table id="example" class="table"style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th>
+                  Doctor ID
+                </th>
+                <th>
+                  Doctor Name
+                </th>
+                <th>
+                  Contact
+                </th>
+                <th>
+                  Department
+                </th>
+                <th>
+                  Specialization
+                </th>
+                <th>
+                  Update
+                </th>
+                <th>
+                  Delete
+                </th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              {% for i in doc %}
+              <tr>
+                  <td>{{i.id}}</td>
+                  <td>{{i.name}}</td>
+                  <td>{{i.mobile}}</td>
+                  <td>{{i.department}}</td>
+                  <td>{{i.special}}</td>
+                  <td class="select"><a class="button"href="{% url 'editdoctor' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-primary">Update</a></td>
+                  <td class="select"><a class="button"href="{% url 'deletedoctor' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+                  
+              </tr>
+              {% endfor i in doc %}
+          </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+

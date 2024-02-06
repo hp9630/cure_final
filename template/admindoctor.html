@@ -1,0 +1,214 @@
+{%extends 'admindoctor12.html'%}
+
+{%block content %}
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+  .text-center{
+    color:darkgrey;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  </style>
+<div class="row" style = "margin-top:50px">
+  
+  <br>
+  <div class="column">
+   
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <body>
+  
+  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+  
+  <script>
+  var doctor="{{d}}"
+  var patient= "{{p}}"
+  var appointment="{{a}}"
+  var xValues = ["Doctor", "Patient", "Appointments"];
+  var yValues = [];
+  var barColors = [
+     "rgba(0, 156, 255, .7)",
+     "rgba(0, 156, 255, .6)",
+     "rgba(0, 156, 255, .5)",
+     "rgba(0, 156, 255, .4)",
+     "rgba(0, 156, 255, .3)"
+  ];
+  yValues[0]=doctor
+  yValues[1]=patient
+  yValues[2]=appointment
+  
+  
+  new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "CureSync 2024 "
+      }
+    }
+  });
+  </script>
+
+  </div>
+  <div class="column">
+      <div class="col">
+      <div class="col-sm-4">
+      <h2 style = "color: darkgrey">{{d}}</h2>
+      <a href="{% url 'viewdoctors' %}"><h4 style="color: rgba(0, 156, 255, .7);">Doctors</h4></a>
+      </div>
+      <div class="col-sm-4">
+        <h2 style = "color: darkgrey">{{p}}</h2>
+        <a href="{% url 'viewpatient' %}"><h4 style="color: rgba(0, 156, 255, .6);">Patients</h4></a>
+       
+        </div>
+        <div class="col-sm-4">
+          <h2 style = "color: darkgrey">{{a}}</h2>
+          <a href="{% url 'viewappointment' %}"><h4 style="color: rgba(0, 156, 255, .5);">Appointment</h4></a>
+  
+          </div>
+      </div>
+    </div>  
+</div>
+
+   <!--  <div>
+      <img src="data:image/png;base64,{{ image_base65 }}" alt="Line Chart">
+
+    </div>
+   <div>
+    <img src="data:image/jpg;base64,{{ image_base64 }}" alt="Line Chart">
+
+   </div>
+
+   -->
+   <div class="column" style = "margin-top:50px">
+       <div class="col-sm-12 col-xl-6">
+      <div class="bg-light rounded h-100 p-4">
+          <h6 class="mb-4" style="color: rgba(0, 156, 255, .7);"> Data Chart</h6>
+          <canvas id="lineChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+    </div>
+    <div class="column" style = "margin-top:50px">
+      <div class="col-sm-12 col-xl-6">
+        <div class="bg-light rounded h-100 p-4">
+          <h6 class="mb-4" style="color: rgba(0, 156, 255, .7);"> Appointment Chart</h6>
+          <canvas id="lineChart1" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+  
+   
+  
+  
+  
+  
+
+<script>
+    // Access the data passed from views.py
+   
+
+    // Create a line chart using Chart.js
+    var ctx = document.getElementById('lineChart').getContext('2d');
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Skin','Heart','Hair'],
+            datasets: [{
+                label: 'Nurse Chart',
+                data: {{counts2|safe}},
+                borderColor: 'rgba(0, 156, 255, .5)',
+                backgroundColor: "rgba(0, 156, 255, .5)",
+                borderWidth: 2,
+                fill:true
+                
+            },
+            {
+                label: 'Patient Chart',
+                data: {{counts1|safe}},
+                borderColor: 'rgba(0, 156, 255, .3)',
+                backgroundColor: "rgba(0, 156, 255, .3)",
+                borderWidth : 2,
+                fill:true
+               
+            },
+            {
+                label: 'Doctor Chart',
+                data: {{counts3|safe}},
+                borderColor: 'rgba(0, 156, 255, .2)',
+                backgroundColor: "rgba(0, 156, 255, .2)", 
+                borderWidth: 2,
+                fill:true
+                
+            },
+            
+        
+        ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+
+<script>
+  // Access the data passed from views.py
+ 
+
+  // Create a line chart using Chart.js
+  var ctx1 = document.getElementById('lineChart1').getContext('2d');
+  var myLineChart2 = new Chart(ctx1, {
+      type: 'line',
+      data: {
+          labels: {{date1|safe}},
+          datasets: [{
+              label: 'Appointment count',
+              data: {{counts|safe}},
+              borderColor: 'rgba(75, 192, 192, 1)',
+              backgroundColor: "rgba(0, 156, 255, .5)",
+              borderWidth: 2,
+             
+          },
+         
+          
+      ]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+</script>
+
+{%endblock %}

@@ -1,0 +1,83 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit Patient</h6>
+         
+                <form  method="post" action="{% url 'updatepatient' id=id %}" >
+                   
+                  {% csrf_token %} 
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label" >Patient Name</label>
+                        
+                        <input type="text" class="form-control" id="name" name="name" value="{{patient.name}}">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label >Gender</label><br>
+                        <input type="radio" name="gender" value="male" checked="{{patient.gender}}"> Male </br>
+                        <input type="radio" name="gender" value="female"checked="{{patient.gender}}"> Female</br>
+                        <input type="radio" name="gender" value="other"checked="{{patient.gender}}"> Other
+                  </div>
+                  <div class="mb-3">
+                    <label >Department Name</label>
+                    <select name="department"id="myDropdown" class="form-control">
+                        {% for i in department %}
+                        <option value="{{i.name}}" >{{i.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                    <div class="mb-3">
+                      <label for="contact" class="form-label">Contact</label>
+                      <input type="text" class="form-control" id="contact" name="contact" value="{{patient.mobile}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="address" class="form-label" >Address</label>
+                    <input type="textarea" class="form-control" id="address" name="address" value="{{patient.address}}">
+                </div>
+                <div class="mb-3">
+                    {% if patient.image %}
+                    <img src="{{patient.image.url}}" alt=""width="50" height="60" >
+                    {% endif %}
+                    <label for="image" class="form-label" >Image</label>
+                    <input type="file" class="form-control" id="image" name="image" >
+                </div>
+
+                
+                <button type="submit" class="btn btn-primary">Edit</button>
+                
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Set the default value using JavaScript
+    document.getElementById("myDropdown").value = "{{patient.department}}";
+  </script>
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'viewdoctor' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+{% endblock %}

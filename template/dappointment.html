@@ -1,0 +1,30 @@
+{%extends 'exportdata.html'%}
+{%block content %}
+<thead>
+    <tr>
+        <th>Appointment ID</th>
+        <th>Doctor Name</th>
+        <th>Patient Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for i in appoint %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.doctor}}</td>
+        <td>{{i.patient}}</td>
+        <td>{{i.date1}}</td>
+        <td>{{i.time1}}</td>
+        <td class="select"><a class="button"href="{% url 'editappoint' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-warning">Update</a></td>
+        <td class="select"><a class="button" href="{% url 'deleteappointment' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor i in appoint %}
+</tbody>
+  
+  
+
+{% endblock %}

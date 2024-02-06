@@ -1,0 +1,68 @@
+{% extends 'adminmain12.html' %}
+
+
+ 
+
+{% block content %} 
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add Appointment</h6>
+
+                <form  method="POST">
+                  {% csrf_token %} 
+                  <div class="mb-3">
+                    
+                    <label >Doctor Name</label>
+                    <select name="doctor" class="form-control">
+                    {% for i in doctor %}
+                        <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                    <div class="mb-3">
+                      <label >Patient Name</label>
+                      <select name="patient" class="form-control">
+                          {% for i in patient %}
+                          <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="date">Date</label>
+                      <input type="date" id="date" name="date" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="time">Time</label>
+                    <input type="time" id="time" name="time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]"required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+alert('Record Saved Successfully');
+window.location=("{% url 'viewappointment' %}");
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+alert('Something went wrong, Try Again');
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}

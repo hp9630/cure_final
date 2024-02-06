@@ -1,0 +1,25 @@
+<div class="mb-3">
+    <label >Department Name</label>
+    <select name="department" class="form-control">
+        {% for i in department %}
+        <option value="{{i.name}}">{{i.name}} [{{i.id}}]</option>
+        {% endfor %}
+    </select>
+  </div>
+
+
+
+  department1=Department.objects.all()
+  de = request.POST['department']
+  department = Department.objects.filter(name=de).first()
+  department=department
+
+
+
+  department =Department.objects.all()
+  d = request.POST.get('department')
+  update.department.name=d
+  update.department.save()
+
+
+  AIzaSyCTtYE_4UZ4_fQZk626Zt0z1honSzbDWxA

@@ -1,0 +1,43 @@
+{%extends 'exportdata.html'%}
+{%block content %}
+<thead>
+    <tr>
+      <th>
+        Doctor ID
+      </th>
+      <th>
+        Doctor Name
+      </th>
+      <th>
+        Contact
+      </th>
+      <th>
+        Department
+      </th>
+      <th>
+        Specialization
+      </th>
+      <th>
+        Update
+      </th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    {% for i in doc %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.special}}</td>
+        <td class="select"><a class="button"href="{% url 'editdoctor' i.id %}" onclick="return confirm('Are   you really want to update ')" class="btn btn-primary">Update</a></td>
+        <td class="select"><a class="button"href="{% url 'deletedoctor' i.id %}" onclick="return confirm('Are   you really want to delete ')" class="btn btn-danger">Delete</a></td>
+        
+    </tr>
+    {% endfor i in doc %}
+</tbody>
+{% endblock %}
